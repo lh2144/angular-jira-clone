@@ -25,7 +25,6 @@
     "component-selector": [
       true,
       "element",
-      "app",
       "kebab-case"
     ],
     "eofline": true,
@@ -44,6 +43,7 @@
       true,
       140
     ],
+    "member-access": true,
     "member-ordering": [
       true,
       {
@@ -95,8 +95,7 @@
       }
     },
     "typedef-whitespace": {
-      "options": [
-        {
+      "options": [{
           "call-signature": "nospace",
           "index-signature": "nospace",
           "parameter": "nospace",
