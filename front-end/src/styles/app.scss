@@ -1,3 +1,6 @@
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
 * {
   box-sizing: border-box;
 }
@@ -5,12 +8,20 @@
 body {
   position: relative;
   height: 100%;
-  background-color: rgb(242, 244, 245);
+  background-color: rgb(242, 244, 245) !important;
 }
 
 main {
   position: relative;
 }
 
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  >.col,
+  >[class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}

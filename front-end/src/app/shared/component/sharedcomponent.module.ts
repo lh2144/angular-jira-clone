@@ -7,7 +7,7 @@ import { ButtonComponent } from './button/button.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
-  exports: [InputComponent, ButtonComponent],
+  exports: [InputComponent, ButtonComponent, ReactiveFormsModule, CommonModule, FormsModule],
   declarations: [InputComponent, ButtonComponent],
   providers: [],
 })
