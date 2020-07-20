@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedComponentModule } from './shared/component/sharedcomponent.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SharedComponentModule } from './shared/component/sharedcomponent.module
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    SharedComponentModule
+    SharedComponentModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

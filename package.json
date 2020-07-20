@@ -1,25 +1,25 @@
 {
-  "name": "jira-clone",
-  "version": "1.0.0",
-  "description": "a minimal jiara clone app",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lh2144/angular-jira-clone.git"
-  },
-  "keywords": [
-    "['angular9'",
-    "'postcss'",
-    "'nestjs'",
-    "'graphql']"
-  ],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lh2144/angular-jira-clone/issues"
-  },
-  "homepage": "https://github.com/lh2144/angular-jira-clone#readme"
+    "name": "jira-clone",
+    "version": "1.0.0",
+    "description": "a minimal jiara clone app",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lh2144/angular-jira-clone.git"
+    },
+    "keywords": [
+        "['angular9'",
+        "'postcss'",
+        "'nestjs'",
+        "'graphql']"
+    ],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/lh2144/angular-jira-clone/issues"
+    },
+    "homepage": "https://github.com/lh2144/angular-jira-clone#readme"
 }

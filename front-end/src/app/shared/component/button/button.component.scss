@@ -1,0 +1,82 @@
+@import 'variable';
+
+:host {
+  pointer-events: none;
+}
+
+button {
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  min-width: 140px;
+  padding: 17px 24px 15px;
+  border-radius: 25px;
+  outline: none;
+  line-height: 1;
+  font-weight: 400;
+  display: inline-block;
+  vertical-align: middle;
+  pointer-events: auto;
+
+  &.btn-primary {
+    background: $blue-sky;
+    color: white;
+
+    &:hover {
+      background: $blue-ocean;
+    }
+
+    &:active {
+      background: $blue-dark;
+    }
+
+    &:disabled {
+      background: $cool-grey;
+    }
+  }
+
+  &.btn-secondry {
+    background: $transparent;
+    border: 1px splid;
+    border-color: $blue-sky;
+    color: $blue-sky;
+
+    &:hover {
+      color: $blue-ocean;
+      border-color: $blue-ocean;
+    }
+
+    &:active {
+      color: $blue-dark;
+      border-color: $blue-dark;
+    }
+
+    &:disabled {
+      color: $cool-grey;
+      border-color: $cool-grey;
+      cursor: default;
+    }
+  }
+
+  &.btn-no-border {
+    background: $transparent;
+    border: none;
+    color: $blue-sky;
+    padding: 0;
+    min-width: inherit;
+    vertical-align: inherit;
+
+    &:hover {
+      color: $blue-ocean;
+    }
+
+    &:active {
+      color: $blue-dark;
+    }
+
+    &:disabled {
+      color: $cool-grey;
+      cursor: default;
+    }
+  }
+}
