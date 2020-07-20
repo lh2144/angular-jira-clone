@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Projcet } from './project';
+import { User } from './user';
 
 @Injectable({providedIn: 'root'})
-export class ProjectService {
-  public porjects: Projcet[];
+export class UserService {
+  public user: User[];
   constructor() { }
+
 }
