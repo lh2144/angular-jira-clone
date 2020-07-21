@@ -10,9 +10,9 @@ import { ButtonComponent } from './button/button.component';
   exports: [
     InputComponent,
     ButtonComponent,
+    ReactiveFormsModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
   ],
   declarations: [InputComponent, ButtonComponent],
   providers: [],
