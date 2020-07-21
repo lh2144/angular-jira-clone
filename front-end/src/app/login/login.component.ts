@@ -6,6 +6,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FormType } from 'app/shared/service';
 
 @Component({
   selector: 'my-login',
@@ -15,7 +16,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   public form: FormGroup;
   public isAuth: boolean = false;
-  public showLogin: boolean = true;
+  public formType: FormType = FormType.LOGIN;
   public control: string[] = ['eamil', 'project', 'comfirm'];
   constructor(public fb: FormBuilder, public router: Router) {}
 
@@ -39,18 +40,15 @@ export class LoginComponent implements OnInit {
 
   public openResetModal(): void {
     // wip
+    this.formType = FormType.RESET;
   }
 
   // wip
   public goSignUp(): void {
-    this.showLogin = !this.showLogin;
+    this.formType = FormType.SIGNUP;
   }
 
-  public validateUser(): void {
+  public validateNext(): void {
     this.router.navigate(['dashboard']);
-    // WIP
-    // if (this.showLogin) {
-    // } else {
-    // }
   }
 }
