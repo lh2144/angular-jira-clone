@@ -4,15 +4,14 @@
   background: #0746a4;
   height: 100vh;
   position: relative;
+  overflow-y: hidden;
 }
 
 header {
   color: white;
   font-size: 3rem;
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: auto;
+  margin-top: 150px;
 }
 
 .container {
@@ -29,6 +28,7 @@ header {
   box-shadow: 2px 0 0.5 $cool-grey;
   box-shadow: 0 2px 0.5 $cool-grey;
   border-radius: 5px;
+  border: 1px solid $cool-grey;
 }
 
 footer {
@@ -45,4 +45,16 @@ footer {
       text-decoration: none;
     }
   }
+}
+
+.icon-size-lg {
+  font-size: 2rem;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.container-for-signup {
+  height: 480px;
 }

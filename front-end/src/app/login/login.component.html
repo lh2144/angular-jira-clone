@@ -1,40 +1,70 @@
 <div class="wrapper">
   <header>
-    ATLASSIAN
+    <span class="material-icons icon-size-lg">donut_small</span>ATLASSIAN
   </header>
-  <div class="container">
-    <div class="row no-gutters flex-row mt-4">
-      <div class="col-12 mt-4 mb-4">
-        <h4>
-          Log In To Your Account
-        </h4>
-      </div>
-      <div class="col-7 m-auto">
-        fsdfsfdsfdsfsdfdsfdsfsdf
-      </div>
-      <div class="col-8 mt-1 m-auto">
-        <form [formGroup]="form">
-          <div class="form-group">
-            <!-- <my-input [formControl]="form.controls['username']"></my-input> -->
-            <input type="text" class="form-control">
-          </div>
-          <div class="form-group">
-            <!-- <my-input [formControl]="form.controls['password']"></my-input> -->
-            <input type="text" class="form-control">
-          </div>
-          <div class="form-grop" *ngIf="isAuth">
-            <!-- wip dynamic create email project-->
-          </div>
-        </form>
-      </div>
-      <div class="col-8 text-right mt-1 m-auto align-self-start">
-        <my-btn [class]="'btn-primary'">Submit</my-btn>
-      </div>
 
-      <footer>
-        <span><a (click)="openResetModal()">Cant't log in?.</a></span> <span><a routerLink="/signup">Sign up for an
-            account</a></span>
-      </footer>
+  <div class="container" [ngClass]="{'container-for-signup': !showLogin}">
+    <ng-container *ngIf="showLogin">
+      <div class="row no-gutters flex-row mt-4">
+        <div class="col-12 mt-4 mb-4">
+          <h4>Log In To Your Account</h4>
+        </div>
+        <div class="col-8 mt-1 m-auto">
+          <form [formGroup]="form">
+            <div class="form-group">
+              <!-- <my-input [formControl]="form.controls['username']"></my-input> -->
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <!-- <my-input [formControl]="form.controls['password']"></my-input> -->
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-grop" *ngIf="isAuth">
+              <!-- wip dynamic create email project-->
+            </div>
+          </form>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="!showLogin">
+      <div class="row no-gutters flex-row mt-4">
+        <div class="col-12 mt-4 mb-4">
+          <h4>Welcome to us</h4>
+        </div>
+        <div class="col-8 mt-1 m-auto">
+          <form [formGroup]="form">
+            <div class="form-group">
+              <!-- <my-input [formControl]="form.controls['username']"></my-input> -->
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <!-- <my-input [formControl]="form.controls['password']"></my-input> -->
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <!-- <my-input [formControl]="form.controls['username']"></my-input> -->
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <!-- <my-input [formControl]="form.controls['password']"></my-input> -->
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <!-- <my-input [formControl]="form.controls['password']"></my-input> -->
+              <input type="text" class="form-control">
+            </div>
+          </form>
+        </div>
+      </div>
+    </ng-container>
+    <div class="col-8 text-right mt-1 m-auto align-self-start">
+      <my-btn [class]="'btn-primary'" (click)="validateUser()">Submit</my-btn>
     </div>
+
+    <footer *ngIf="showLogin">
+      <span><a class="link" (click)="openResetModal()">Cant't log in?.</a></span> <span><a class="link"
+          (click)="goSignUp()">Sign up for an account</a></span>
+    </footer>
   </div>
 </div>
