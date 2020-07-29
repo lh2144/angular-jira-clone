@@ -18,7 +18,6 @@ export class Projcet {
   public issues: Issue[] = [];
   public users: User[] = [];
 
-  // tslint:disable-next-line: ban-types
   constructor(projectObj?: Object) {
     if (projectObj) {
       this.id = projectObj['id'];

@@ -1,15 +1,8 @@
-<my-btn [class]="'btn-secondry'">
-  Cancel
-</my-btn>
-<my-btn [class]="'btn-primary'" [type]="'submit'" [disabled]="true">
-  Submit
-</my-btn>
-
-<header>
+<header *ngIf="isAuth">
   wip......
 </header>
 
-<main>
+<main class="main-container">
   <router-outlet></router-outlet>
 </main>
 
