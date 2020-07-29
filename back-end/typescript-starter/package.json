@@ -66,8 +66,8 @@
     "coverageDirectory": "../coverage",
     "testEnvironment": "node",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/lh2144/angular-jira-clone.git"
+      "type": "git",
+      "url": "git+https://github.com/lh2144/angular-jira-clone.git"
     }
   }
 }
