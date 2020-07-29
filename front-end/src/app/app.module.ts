@@ -9,13 +9,15 @@ import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedComponentModule } from './shared/component/sharedcomponent.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProjectSettingComponent } from './project-setting/project-setting.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    ErrorpageComponent
+    ErrorpageComponent,
+    ProjectSettingComponent
   ],
   imports: [
     BrowserModule,

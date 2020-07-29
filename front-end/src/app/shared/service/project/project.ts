@@ -7,7 +7,7 @@ export enum ProjectCategory {
   BUSINESS = 'Business',
 }
 
-export class Projcet {
+export class Project {
   public id: string;
   public name: string;
   public url: string;
