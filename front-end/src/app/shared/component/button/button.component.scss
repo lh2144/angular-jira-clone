@@ -1,4 +1,4 @@
-@import 'variable';
+@import "variable";
 
 :host {
   pointer-events: none;
@@ -8,7 +8,7 @@ button {
   border: none;
   font-size: 1rem;
   cursor: pointer;
-  min-width: 140px;
+  min-width: 100px;
   padding: 17px 24px 15px;
   border-radius: 25px;
   outline: none;
@@ -19,7 +19,7 @@ button {
   pointer-events: auto;
 
   &.btn-primary {
-    background: $blue-sky;
+    background: $blue-login;
     color: white;
 
     &:hover {

@@ -4,15 +4,16 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 
-
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'signup', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: '**', component: ErrorpageComponent }
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', component: ErrorpageComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

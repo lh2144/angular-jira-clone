@@ -1,5 +1,5 @@
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
 * {
   box-sizing: border-box;
@@ -13,14 +13,17 @@ body {
 
 main {
   position: relative;
+  height: 100%;
+  display: block;
+  text-align: center;
 }
 
 .no-gutters {
   margin-right: 0;
   margin-left: 0;
 
-  >.col,
-  >[class*="col-"] {
+  > .col,
+  > [class*="col-"] {
     padding-right: 0;
     padding-left: 0;
   }
