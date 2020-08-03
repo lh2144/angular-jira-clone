@@ -7,7 +7,7 @@ export class User {
   public updatedAt: string;
   public issueIds: string[];
 
-  constructor(userObj: any) {
+  constructor(userObj?: any) {
     this.id = userObj.id;
     this.name = userObj.name;
     this.email = userObj.email;
@@ -15,8 +15,11 @@ export class User {
     this.createdAt = userObj.createdAt;
     this.updatedAt = userObj.updateAt;
     this.issueIds = [];
-    userObj.issueIds.forEach((id: string) => {
-      this.issueIds.push(id);
-    });
+    if (userObj.issueIds) {
+      userObj.issueIds.forEach((id: string) => {
+        this.issueIds.push(id);
+      });
+    }
+
   }
 }

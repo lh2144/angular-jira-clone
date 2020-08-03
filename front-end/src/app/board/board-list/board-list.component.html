@@ -1,0 +1,11 @@
+<div class="board-list-main row no-gutters flex-column">
+  <div class="list-header">
+    {{ statusDisplay[status] }}
+    <span class="status-total">{{ issueCount }}</span>
+  </div>
+  <div class="card-wrap" cdkDropList [cdkDropListData]="issues" [id]="status" (cdkDropListDropped)="drop($event)">
+    <ng-container *ngFor="let issue of issues">
+      <my-issue-card [issue]="issue" cdkDrag [cdkDragData]="issue"></my-issue-card>
+    </ng-container>
+  </div>
+</div>

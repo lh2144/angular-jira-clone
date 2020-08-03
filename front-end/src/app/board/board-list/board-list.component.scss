@@ -1,0 +1,27 @@
+:host {
+  height: 100%;
+}
+
+.board-list-main {
+  height: 100%;
+  padding: 5px 12px;
+}
+
+.card-wrap {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-header {
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.cdk-drop-list-dragging .cdk-drag {
+  transition: transform 250ms;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms;
+}

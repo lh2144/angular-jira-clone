@@ -1,0 +1,16 @@
+<div class="issue-wrap">
+  <div class="issue-container row no-gutters flex-column">
+    <p class="issue-head">{{issue?.title}}</p>
+    <div class="issue-main row no-gutters flex-center items-center">
+      <div class="assignee row no-gutters items-center">
+        <ng-container *ngFor="let user of assignee">
+          <div class="assignee-icon"></div>
+        </ng-container>
+        <div class="task-number">{{issue?.type}}-{{issue?.id}}</div>
+      </div>
+      <div class="task-icon row items-center">
+        <div class="task-type"><span></span></div>
+      </div>
+    </div>
+  </div>
+</div>

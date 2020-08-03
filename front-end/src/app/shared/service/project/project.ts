@@ -15,8 +15,8 @@ export class Project {
   public category: ProjectCategory;
   public createdAt: string;
   public updateAt: string;
-  public issues: Issue[] = [];
-  public users: User[] = [];
+  public issues: Issue[];
+  public users: User[];
 
   constructor(projectObj?: Object) {
     if (projectObj) {

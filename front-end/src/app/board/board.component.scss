@@ -1,0 +1,23 @@
+.board-box {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: nowrap;
+}
+
+.board-list-wrap {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% / 4 - 8px);
+  min-height: 600px;
+  min-width: 200px;
+  background-color: white;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  flex-grow: 1;
+}
+
+my-board-list {
+  height: 100%;
+}

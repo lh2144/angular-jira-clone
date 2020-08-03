@@ -10,6 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedComponentModule } from './shared/component/sharedcomponent.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProjectSettingComponent } from './project-setting/project-setting.component';
+import { BoardComponent } from './board/board.component';
+import { BoardListComponent } from './board/board-list/board-list.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,14 +20,17 @@ import { ProjectSettingComponent } from './project-setting/project-setting.compo
     LoginComponent,
     DashboardComponent,
     ErrorpageComponent,
-    ProjectSettingComponent
+    ProjectSettingComponent,
+    BoardComponent,
+    BoardListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     SharedComponentModule,
-    NgbModule
+    NgbModule,
+    NoopAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
