@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { IssueStatusDisplay, Issue, ProjectService, IssueStatus } from 'app/shared/service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 @Component({
   selector: 'my-board-list',
   templateUrl: './board-list.component.html',
-  styleUrls: ['./board-list.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./board-list.component.scss']
+  // encapsulation: ViewEncapsulation.None
 })
 export class BoardListComponent implements OnInit {
 

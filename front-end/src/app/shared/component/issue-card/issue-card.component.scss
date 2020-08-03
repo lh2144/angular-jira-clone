@@ -2,17 +2,44 @@
   background-color: whitesmoke;
   box-shadow: 2px 2px 5px gainsboro;
   margin-bottom: 0.5rem;
-  padding: 5px 3px;
+  padding: 10px;
 }
 
+// .issue-main {
+//   justify-content: space-between;
+//   align-items: center;
+// }
+
 .assignee-icon {
-  border-radius: 100%;
-  background-color: gold;
-  width: 20px;
-  height: 20px;
+  // background-color: gold;
+  width: 24px;
+  height: 24px;
 }
 
 .assignee-icon:not(:first-child) {
   margin-left: -5px;
-  background-color: greenyellow;
+}
+
+.task-number {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 2;
+}
+
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+}
+
+.icon-task {
+  color: rgb(75, 173, 232);
+}
+
+.icon-story {
+  color: rgb(99, 186, 60);
+}
+
+.icon-bug {
+  color: rgb(229, 73, 58);
 }
