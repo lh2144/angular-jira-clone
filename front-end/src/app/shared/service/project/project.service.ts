@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Project } from './project';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/Operators';
 import { UserService, User } from '../user';
 import { environment } from 'environments/environment';
 import { Issue, IssueStatus } from './issue';
+import { FilterQuery } from 'typings/common';
 
 @Injectable({ providedIn: 'root' })
 export class ProjectService {
   public porject: Project;
   public issues: Issue[];
   public users: User[];
+  public searchQuery: Subject<FilterQuery> = new Subject<FilterQuery>();
   private base: string = environment.base_api;
   constructor(public httpClient: HttpClient, public userService: UserService) { }
 
@@ -49,5 +51,16 @@ export class ProjectService {
 
   public getIssueByStatus(status: IssueStatus): Issue[] {
     return this.issues.filter((item: Issue) => item.status === status);
+  }
+
+  public filterIssue(status: IssueStatus, searchTerm: string): Issue[] {
+    return this.issues.filter((item: Issue) => {
+      return item.description.includes(searchTerm) && item.status === status;
+    });
+  }
+
+  public updateIssueStatus(newIssue: Issue): void {
+    // wip update be for status change
+    console.log(newIssue);
   }
 }

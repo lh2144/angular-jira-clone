@@ -1,3 +1,11 @@
+<header class="d-flex">
+  <div class="head mr-auto text-left">Kanban Board</div>
+  <div class="button-link">
+    <my-btn [class]="'btn-square'" class="mr-1">Git Repo</my-btn>
+    <my-btn [class]="'btn-square'">Angular</my-btn>
+  </div>
+</header>
+<my-board-filter></my-board-filter>
 <div class="board-box row mt-3" cdkDropListGroup>
   <div class="board-list-wrap" *ngFor="let status of issueStatus">
     <my-board-list [status]="status"></my-board-list>

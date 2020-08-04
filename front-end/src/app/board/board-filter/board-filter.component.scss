@@ -1,0 +1,29 @@
+.filter-wrap {
+  width: 70%;
+  margin: auto;
+  margin-top: 2rem;
+  flex-wrap: nowrap;
+
+  .filter-search-wrap {
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: nowrap;
+    min-width: 200px !important;
+
+    .material-icons {
+      background-color: white;
+      line-height: 38px;
+    }
+
+    input {
+      display: block;
+      border: none;
+      outline: none;
+
+    }
+
+    .filter-button {
+      min-width: 200px !important;
+    }
+  }
+}

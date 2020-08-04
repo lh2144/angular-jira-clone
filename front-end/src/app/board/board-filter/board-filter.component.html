@@ -1,0 +1,11 @@
+<div class="filter-wrap row no-gutters">
+  <div class="filter-search-wrap mr-3">
+    <span class="material-icons">search</span>
+    <input type="text" class="input w-100" name="filter" placeholder="Search" ngModel
+      (ngModelChange)="formSearchTerm($event)">
+  </div>
+  <div class="filter-button">
+    <my-btn [class]="'btn-square'" class="mr-1" (click)="toggleSearch('onlyMe')">Only Me</my-btn>
+    <my-btn [class]="'btn-square'" (click)="toggleSearch('Done')">Resolved</my-btn>
+  </div>
+</div>

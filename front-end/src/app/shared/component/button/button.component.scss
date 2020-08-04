@@ -79,4 +79,11 @@ button {
       cursor: default;
     }
   }
+
+  &.btn-square {
+    border-radius: 0;
+    background-color: #4bade8;
+    min-width: 80px;
+    padding: 12px;
+  }
 }

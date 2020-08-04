@@ -2,8 +2,22 @@
   width: 70%;
   margin: auto;
   display: flex;
-  flex-grow: 1;
   flex-wrap: nowrap;
+}
+
+header {
+  width: 70%;
+  margin: auto;
+  margin-top: 2rem;
+
+  .head {
+    font-size: 36px;
+    padding: 10px;
+  }
+
+  .button-link {
+    margin-right: 16px;
+  }
 }
 
 .board-list-wrap {

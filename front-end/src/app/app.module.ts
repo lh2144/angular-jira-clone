@@ -13,6 +13,7 @@ import { ProjectSettingComponent } from './project-setting/project-setting.compo
 import { BoardComponent } from './board/board.component';
 import { BoardListComponent } from './board/board-list/board-list.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BoardFilterComponent } from './board/board-filter/board-filter.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     ErrorpageComponent,
     ProjectSettingComponent,
     BoardComponent,
-    BoardListComponent
+    BoardListComponent,
+    BoardFilterComponent
   ],
   imports: [
     BrowserModule,
