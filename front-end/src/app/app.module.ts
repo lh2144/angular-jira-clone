@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +14,7 @@ import { BoardComponent } from './board/board.component';
 import { BoardListComponent } from './board/board-list/board-list.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BoardFilterComponent } from './board/board-filter/board-filter.component';
+import { ProjectService } from './shared/service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,14 @@ import { BoardFilterComponent } from './board/board-filter/board-filter.componen
     NgbModule,
     NoopAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (service: ProjectService) => () => service.getProject().toPromise(),
+      deps: [ProjectService],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

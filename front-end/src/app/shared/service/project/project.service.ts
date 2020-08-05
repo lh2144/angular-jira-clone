@@ -13,6 +13,7 @@ export class ProjectService {
   public porject: Project;
   public issues: Issue[];
   public users: User[];
+  public canLoad: boolean;
   public searchQuery: Subject<FilterQuery> = new Subject<FilterQuery>();
   private base: string = environment.base_api;
   constructor(public httpClient: HttpClient, public userService: UserService) { }
@@ -21,6 +22,7 @@ export class ProjectService {
 
     return this.httpClient.get<Project>(`${this.base}/project`).pipe(tap((project: Project) => {
       this.porject = new Project(project);
+      this.canLoad = true;
       this.setIssues();
       this.setUsers();
     }));

@@ -1,1 +1,31 @@
-<p>project-setting works!</p>
+<div class="setting-wrap">
+  <header>Project Setting</header>
+  <div class="setting-main">
+    <form [formGroup]="settingForm">
+      <label>
+        name
+        <input class="form-control" type="text" name="name" formControlName="name">
+      </label>
+      <label>
+        url
+        <input class="form-control" type="text" name="url" formControlName="url">
+      </label>
+      <label>
+        category
+        <select class="form-control" formControlName="category">
+          <option *ngFor="let category of categories">{{ category }}</option>
+        </select>
+      </label>
+      <label>
+        Description
+        <textarea class="form-control" type="text" name="name" formControlName="descp">
+          </textarea>
+      </label>
+      <div class="btn-wrap">
+        <my-btn (click)="onSave()">Save</my-btn>
+        <my-btn [class]="'btn-secondry'">Cancel</my-btn>
+      </div>
+
+    </form>
+  </div>
+</div>
