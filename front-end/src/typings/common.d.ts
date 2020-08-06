@@ -5,3 +5,8 @@ type FilterQuery = {
   userId?: string;
   status?: IssueStatus
 }
+
+type IconType = {
+  class: string;
+  icon: string;
+}

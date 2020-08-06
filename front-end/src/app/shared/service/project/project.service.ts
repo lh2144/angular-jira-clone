@@ -65,4 +65,8 @@ export class ProjectService {
     // wip update be for status change
     console.log(newIssue);
   }
+
+  public getReporter(id: string): User {
+    return this.users.find((user: User) => user.id === id);
+  }
 }

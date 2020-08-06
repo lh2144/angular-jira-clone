@@ -8,13 +8,14 @@ import { IssueCardComponent } from './issue-card/issue-card.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { IssuesComponent } from './issues/issues.component';
 import { QuillModule } from 'ngx-quill';
-
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     DragDropModule,
+    MatDialogModule,
     QuillModule.forRoot()
   ],
   exports: [

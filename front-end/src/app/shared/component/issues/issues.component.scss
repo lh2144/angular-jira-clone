@@ -1,0 +1,78 @@
+.issue-detail-wrap {
+  .issue-detail-header {
+    margin-bottom: 0.25rem;
+    font-size: 14px;
+    font-weight: 500;
+
+    .issue-type {
+      line-height: 2;
+    }
+
+    .close {
+      cursor: pointer;
+    }
+  }
+
+  main {
+    .issue-d-main-comment {
+      .issue-comment-wrap {
+        header {
+          text-align: left;
+          margin-bottom: 0.5rem;
+        }
+
+        .assignee-icon {
+          width: 24px;
+          height: 24px;
+          display: inline-block;
+          text-align: left;
+
+          .avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 100%;
+
+          }
+        }
+
+        .comment-input {
+          padding-left: 24px;
+
+          label {
+            width: 100%;
+          }
+        }
+
+        .btn-wrap {
+          text-align: right;
+        }
+      }
+    }
+
+    .issue-detail-right {
+      text-transform: uppercase;
+
+      .issue-timestamp {
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+        border-top: 2px solid grey;
+      }
+    }
+  }
+}
+
+.icon-task {
+  color: rgb(75, 173, 232);
+}
+
+.icon-story {
+  color: rgb(99, 186, 60);
+}
+
+.icon-bug {
+  color: rgb(229, 73, 58);
+}
+
+.close {
+  float: none;
+}

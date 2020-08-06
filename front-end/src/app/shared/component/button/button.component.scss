@@ -19,7 +19,7 @@ button {
   pointer-events: auto;
 
   &.btn-primary {
-    background: $blue-login;
+    background: $blue-sky;
     color: white;
 
     &:hover {
@@ -37,7 +37,7 @@ button {
 
   &.btn-secondry {
     background: $transparent;
-    border: 1px splid;
+    // border: 1px splid;
     border-color: $blue-sky;
     color: $blue-sky;
 
@@ -81,9 +81,14 @@ button {
   }
 
   &.btn-square {
+
     border-radius: 0;
     background-color: #4bade8;
     min-width: 80px;
     padding: 12px;
+
+    &.bg-grey {
+      background-color: #f4f5f7;
+    }
   }
 }

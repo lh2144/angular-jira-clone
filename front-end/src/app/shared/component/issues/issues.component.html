@@ -1,16 +1,24 @@
 <div class="issue-detail-wrap">
   <div class="issue-detail-header d-flex">
-    <div class="flex-grow-1 mr-auto">
-      <span></span>{{ issue.type }}
+    <div class="mr-auto issue-type d-flex">
+      <span class="material-icons {{iconClass}}">
+        {{ iconType }}
+      </span>
+      <div class="issue-type">{{ issue.type }} - {{ issue.id }}</div>
     </div>
-    <div class="nav-right">
-      <div class="feed-back"></div>
-      <div class="issue-delet"></div>
+    <div class="nav-right d-flex">
+      <div class="feed-back flex-grow-1"></div>
+      <div class="issue-delet flex-grow-1 mr-2">
+        <span class="material-icons" (click)="deleteIssue()">delete</span>
+      </div>
+      <div class="close flex-grow-1" (click)="closeModel()">
+        <span aria-hidden="true">&times;</span>
+      </div>
     </div>
   </div>
 
   <main class="d-flex">
-    <div class="issue-detail-main flex-grow-1">
+    <div class="issue-detail-main col-9">
       <div class="issue-d-main-wrap d-flex flex-column">
         <div class="issue-d-main-title flex-grow-1">
           <textarea class="form-control"></textarea>
@@ -36,9 +44,10 @@
         <div class="issue-d-main-comment flex-grow-1">
           <div class="issue-comment-wrap">
             <header>Comments</header>
-            <div class="assignee">
-              <img [src]="">
+            <div class="assignee-icon mr-1">
+              <img class="avatar" [src]="reporter.avatarUrl">
             </div>
+            {{ reporter.name }}
             <div class="comment-input">
               <label>
                 <input type="text" class="form-control" [formControl]="commentControl">
@@ -53,7 +62,27 @@
       </div>
     </div>
 
-    <div class=" issue-detail-right flex-grow-1">
+    <div class=" issue-detail-right col-3">
+      <div class="issue-btn-wrap d-flex flex-column">
+        <div class="status-btn">
+          <p>Status</p>
+          <my-btn [class]="'btn-square bg-grey'">{{ issue.status }}</my-btn>
+        </div>
+        <div class="reporter-btn">
+          <p>Reporter</p>
+          <my-btn [class]="'btn-square bg-grey'">{{ reporter.name }}</my-btn>
+        </div>
+        <div class="assignee-btn">
+          <p>Assignees</p>
+          <ng-container *ngFor="let assigne of assignees">
+            <my-btn [class]="'btn-square bg-grey'" class="mr-1">{{ assigne.name }}</my-btn>
+          </ng-container>
+        </div>
+      </div>
+      <div class="issue-timestamp">
+        <div class="created-at">Created - {{ issue.createdAt | date: 'medium' }} </div>
+        <div class="updated-at">Updated - {{ issue.updatedAt | date: 'medium' }}</div>
+      </div>
     </div>
   </main>
 </div>
