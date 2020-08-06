@@ -15,6 +15,7 @@ import { BoardListComponent } from './board/board-list/board-list.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BoardFilterComponent } from './board/board-filter/board-filter.component';
 import { ProjectService } from './shared/service';
+import { IssuesComponent } from './shared/component/issues/issues.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ProjectService } from './shared/service';
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [IssuesComponent]
 })
 export class AppModule { }
