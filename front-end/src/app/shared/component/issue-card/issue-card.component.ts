@@ -12,7 +12,7 @@ export class IssueCardComponent implements OnInit, OnChanges {
   public assignee: User[];
   public issueTypeIcon: string;
   public iconClass: string;
-  constructor(public projectService: ProjectService) { }
+  constructor(public projectService: ProjectService, public modelService: Mode) { }
 
   public ngOnChanges(changes: SimpleChanges): void {
     // this.assignee = this.projectService.getAssignees(this.issue.id);
@@ -41,4 +41,7 @@ export class IssueCardComponent implements OnInit, OnChanges {
     this.assignee = this.projectService.getAssignees(this.issue.id);
   }
 
+  public openModel(): void {
+
+  }
 }
