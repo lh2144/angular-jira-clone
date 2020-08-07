@@ -15,6 +15,8 @@ export class ProjectService {
   public users: User[];
   public canLoad: boolean;
   public searchQuery: Subject<FilterQuery> = new Subject<FilterQuery>();
+  private issueUpdate: Subject<boolean> = new Subject<boolean>();
+  public issueUpdate$: Observable<boolean> = this.issueUpdate.asObservable();
   private base: string = environment.base_api;
   constructor(public httpClient: HttpClient, public userService: UserService) { }
 
@@ -68,5 +70,15 @@ export class ProjectService {
 
   public getReporter(id: string): User {
     return this.users.find((user: User) => user.id === id);
+  }
+
+  public updateIssue(payload: any): any {
+    // let tep;
+    this.issues.forEach((item, index) => {
+      if (item.id === payload['id']) {
+        this.issues[index] = { ...item, title: payload['title'] };
+        this.issueUpdate.next(true);
+      }
+    });
   }
 }

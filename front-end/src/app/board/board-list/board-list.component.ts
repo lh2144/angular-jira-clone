@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { IssueStatusDisplay, Issue, ProjectService, IssueStatus } from 'app/shared/service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { debounceTime, distinctUntilChanged } from 'rxjs/Operators';
@@ -9,16 +9,16 @@ import { FilterQuery } from 'typings/common';
   templateUrl: './board-list.component.html',
   styleUrls: ['./board-list.component.scss']
 })
-export class BoardListComponent implements OnInit {
+export class BoardListComponent implements OnInit, OnChanges {
 
   @Input() public status: IssueStatus;
-  public issues: Issue[];
+  @Input() public issues: Issue[];
   public statusDisplay: any = IssueStatusDisplay;
   public preIssue: any = null;
   constructor(public projectService: ProjectService) { }
 
   public ngOnInit(): void {
-    this.issues = this.projectService.getIssueByStatus(this.status);
+    console.log(this.issues);
     this.projectService.searchQuery
       .pipe(
         debounceTime(1000),
@@ -39,6 +39,15 @@ export class BoardListComponent implements OnInit {
           return matchTerm && matchUser && ignorDone;
         });
       });
+  }
+
+  public ngOnChanges(): void {
+    // if (changes.hasOwnProperty('issues')) {
+    //   const issuesChange = changes['issues'];
+    //   if (issuesChange.previousValue !== issuesChange.currentValue) {
+
+    //   }
+    // }
   }
 
   get issueCount(): number {

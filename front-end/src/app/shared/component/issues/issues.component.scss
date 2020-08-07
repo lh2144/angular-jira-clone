@@ -6,6 +6,25 @@
 
     .issue-type {
       line-height: 2;
+      position: relative;
+
+      .issue-type-dropdown {
+        display: none;
+        position: absolute;
+        width: 100%;
+        top: 100%;
+        z-index: 2;
+        padding: 2px 0;
+        background-color: white;
+
+        &.show {
+          display: block;
+        }
+
+        .text {
+          vertical-align: text-bottom;
+        }
+      }
     }
 
     .close {
@@ -14,6 +33,38 @@
   }
 
   main {
+    .issue-detail-main {
+      .issue-d-main-descp {
+        .content-readonly {
+          position: relative;
+          min-height: 50px;
+          cursor: pointer;
+
+          .ql-editor {
+            height: auto;
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+              margin-bottom: 10px;
+            }
+
+            img,
+            video {
+              display: inline-block;
+            }
+
+            ul {
+              padding-left: 0.5rem;
+            }
+          }
+        }
+      }
+    }
+
     .issue-d-main-comment {
       .issue-comment-wrap {
         header {

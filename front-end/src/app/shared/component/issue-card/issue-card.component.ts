@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { Issue, ProjectService, User } from 'app/shared/service';
 import { MatDialog } from '@angular/material/dialog';
 import { IssuesComponent } from '../issues/issues.component';
-import { getIssueTypeIcon } from 'app/shared/service/util/issue-icon-type';
+import { IssueTypeUtil } from 'app/shared/service/util/issue-icon-type';
 
 @Component({
   selector: 'my-issue-card',
@@ -22,7 +22,7 @@ export class IssueCardComponent implements OnInit, OnChanges {
     if (changes.hasOwnProperty('issue')) {
       const issueChange = changes['issue'];
       if (issueChange.previousValue !== issueChange.currentValue) {
-        const iconType = getIssueTypeIcon(this.issue.type);
+        const iconType = IssueTypeUtil.getIssueTypeIcon(this.issue.type);
         this.issueTypeIcon = iconType.icon;
         this.iconClass = iconType.class;
       }
@@ -34,13 +34,12 @@ export class IssueCardComponent implements OnInit, OnChanges {
   }
 
   public openModel(): void {
-    const dialogRef = this.diaLog.open(IssuesComponent, {
+    this.diaLog.open(IssuesComponent, {
       minWidth: '700px',
       minHeight: '680px',
       maxWidth: '1000px',
+      autoFocus: false,
       data: { issue: this.issue }
     });
-
-    dialogRef.afterClosed().subscribe();
   }
 }

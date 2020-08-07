@@ -1,20 +1,25 @@
 import { IssueType } from '../project';
 import { IconType } from 'typings/common';
-
-export function getIssueTypeIcon(issueType: IssueType): IconType {
-  const types = {
+export class IssueTypeUtil {
+  public static issuetypes = {
     Task: {
       class: 'icon-task',
-      icon: 'check_circle'
+      icon: 'check_circle',
+      type: 'Task'
     },
     Story: {
       class: 'icon-story',
-      icon: 'bookmark'
+      icon: 'bookmark',
+      type: 'Story'
     },
     Bug: {
       class: 'icon-bug',
-      icon: 'info'
+      icon: 'info',
+      type: 'Bug'
     }
   };
-  return types[issueType];
+  public static getIssueTypeIcon(issueType: IssueType): IconType {
+
+    return IssueTypeUtil.issuetypes[issueType];
+  }
 }

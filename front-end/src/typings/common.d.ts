@@ -9,4 +9,5 @@ type FilterQuery = {
 type IconType = {
   class: string;
   icon: string;
+  type: string;
 }

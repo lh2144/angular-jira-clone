@@ -1,10 +1,20 @@
 <div class="issue-detail-wrap">
   <div class="issue-detail-header d-flex">
-    <div class="mr-auto issue-type d-flex">
-      <span class="material-icons {{iconClass}}">
-        {{ iconType }}
-      </span>
-      <div class="issue-type">{{ issue.type }} - {{ issue.id }}</div>
+    <div class="mr-auto issue-type d-flex" (click)="toggleDropDown = !toggleDropDown">
+      <div class="d-flex issue-type-cur">
+        <span class="material-icons {{iconClass}}">
+          {{ iconType }}
+        </span>
+        <div class="issue-type">{{ issue.type }} - {{ issue.id }}</div>
+      </div>
+      <div class="issue-type-dropdown" [ngClass]="{'show': toggleDropDown}">
+        <div class="dropdown-container" *ngFor="let icon of issueType" (click)="updateType()">
+          <span class="material-icons {{icon.class}}">
+            {{icon.icon}}
+          </span>
+          <span class="text"> - {{ icon.type }}</span>
+        </div>
+      </div>
     </div>
     <div class="nav-right d-flex">
       <div class="feed-back flex-grow-1"></div>
@@ -18,24 +28,24 @@
   </div>
 
   <main class="d-flex">
-    <div class="issue-detail-main col-9">
+    <div class="issue-detail-main col-8">
       <div class="issue-d-main-wrap d-flex flex-column">
         <div class="issue-d-main-title flex-grow-1">
-          <textarea class="form-control"></textarea>
+          <input type="text" class="form-control" [formControl]="titleControl" (blur)="updateTitle()"
+            [(ngModel)]="title" />
         </div>
-
         <div class="issue-d-main-descp flex-grow-1">
-          <ng-container *ngIf="isEditing; else readOnlyTemplate">
+          <ng-container *ngIf="isDescpEditing; else readOnlyTemplate">
             <quill-editor class="editor" [modules]="editorOptions" [formControl]="descpControl" [placeholder]="''"
-              (onEditorCreated)="editorCreated()">
+              (onEditorCreated)="editorCreated($event)">
             </quill-editor>
             <div class="btn-wrap">
-              <my-btn>Save</my-btn>
+              <my-btn (click)="saveDescription()">Save</my-btn>
               <my-btn [class]="'btn-secondry'">Cancel</my-btn>
             </div>
           </ng-container>
           <ng-template #readOnlyTemplate>
-            <div class="read-only ql-snow" *ngIf="!isEditing">
+            <div class="content-readonly ql-snow" *ngIf="!isDescpEditing">
               <div class="ql-editor" [innerHTML]="issue.description || 'Click to add Description'"></div>
             </div>
           </ng-template>
@@ -53,7 +63,7 @@
                 <input type="text" class="form-control" [formControl]="commentControl">
               </label>
             </div>
-            <div class="btn-wrap">
+            <div class="btn-wrap" *ngIf="isCommentEditing">
               <my-btn>Save</my-btn>
               <my-btn [class]="'btn-secondry'">Cancel</my-btn>
             </div>
@@ -62,7 +72,7 @@
       </div>
     </div>
 
-    <div class=" issue-detail-right col-3">
+    <div class=" issue-detail-right col-4">
       <div class="issue-btn-wrap d-flex flex-column">
         <div class="status-btn">
           <p>Status</p>
