@@ -1,3 +1,4 @@
+import { Comment } from '../comment';
 export enum IssueType {
   STORY = 'Story',
   TASK = 'Task',

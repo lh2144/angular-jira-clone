@@ -12,6 +12,7 @@ header {
   font-size: 3rem;
   margin: auto;
   margin-top: 150px;
+  text-align: center;
 }
 
 .container {
@@ -29,6 +30,7 @@ header {
   box-shadow: 0 2px 0.5 $cool-grey;
   border-radius: 5px;
   border: 1px solid $cool-grey;
+  text-align: center;
 }
 
 footer {
@@ -39,8 +41,10 @@ footer {
   position: absolute;
   bottom: 16px;
   right: 48px;
+
   span {
     color: $blue-ocean;
+
     & a {
       text-decoration: none;
     }

@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { Issue, ProjectService, User } from 'app/shared/service';
 import { MatDialog } from '@angular/material/dialog';
 import { IssuesComponent } from '../issues/issues.component';
-import { IssueTypeUtil } from 'app/shared/service/util/issue-icon-type';
+import { IssuesUtil } from 'app/shared/service/util/issue-icon-type';
 
 @Component({
   selector: 'my-issue-card',
@@ -22,7 +22,7 @@ export class IssueCardComponent implements OnInit, OnChanges {
     if (changes.hasOwnProperty('issue')) {
       const issueChange = changes['issue'];
       if (issueChange.previousValue !== issueChange.currentValue) {
-        const iconType = IssueTypeUtil.getIssueTypeIcon(this.issue.type);
+        const iconType = IssuesUtil.getIssueTypeIcon(this.issue.type);
         this.issueTypeIcon = iconType.icon;
         this.iconClass = iconType.class;
       }

@@ -1,14 +1,14 @@
 <div class="issue-detail-wrap">
   <div class="issue-detail-header d-flex">
-    <div class="mr-auto issue-type d-flex" (click)="toggleDropDown = !toggleDropDown">
+    <div class="mr-auto issue-type d-flex" (click)="toggleDropDownT = !toggleDropDownT">
       <div class="d-flex issue-type-cur">
         <span class="material-icons {{iconClass}}">
           {{ iconType }}
         </span>
         <div class="issue-type">{{ issue.type }} - {{ issue.id }}</div>
       </div>
-      <div class="issue-type-dropdown" [ngClass]="{'show': toggleDropDown}">
-        <div class="dropdown-container" *ngFor="let icon of issueType" (click)="updateType()">
+      <div class="issue-type-dropdown" [ngClass]="{'show': toggleDropDownT}">
+        <div class="dropdown-container" *ngFor="let icon of issueType" (click)="updateType(icon)">
           <span class="material-icons {{icon.class}}">
             {{icon.icon}}
           </span>
@@ -39,13 +39,13 @@
             <quill-editor class="editor" [modules]="editorOptions" [formControl]="descpControl" [placeholder]="''"
               (onEditorCreated)="editorCreated($event)">
             </quill-editor>
-            <div class="btn-wrap">
-              <my-btn (click)="saveDescription()">Save</my-btn>
-              <my-btn [class]="'btn-secondry'">Cancel</my-btn>
+            <div class="btn-wrap mt-2">
+              <my-btn [class]="'btn-primary sm'" (click)="saveDescription()">Save</my-btn>
+              <my-btn [class]="'btn-secondry sm'">Cancel</my-btn>
             </div>
           </ng-container>
           <ng-template #readOnlyTemplate>
-            <div class="content-readonly ql-snow" *ngIf="!isDescpEditing">
+            <div class="content-readonly ql-snow" *ngIf="!isDescpEditing" (click)="setEditorMode(true)">
               <div class="ql-editor" [innerHTML]="issue.description || 'Click to add Description'"></div>
             </div>
           </ng-template>
@@ -60,11 +60,11 @@
             {{ reporter.name }}
             <div class="comment-input">
               <label>
-                <input type="text" class="form-control" [formControl]="commentControl">
+                <input type="text" class="form-control" [formControl]="commentControl" (focus)="isCommentEditing=true">
               </label>
             </div>
             <div class="btn-wrap" *ngIf="isCommentEditing">
-              <my-btn>Save</my-btn>
+              <my-btn (click)="saveComment()">Save</my-btn>
               <my-btn [class]="'btn-secondry'">Cancel</my-btn>
             </div>
           </div>
@@ -74,15 +74,38 @@
 
     <div class=" issue-detail-right col-4">
       <div class="issue-btn-wrap d-flex flex-column">
-        <div class="status-btn">
-          <p>Status</p>
-          <my-btn [class]="'btn-square bg-grey'">{{ issue.status }}</my-btn>
+        <div class="status-btn" (click)="toggleDropDownS = !toggleDropDownS">
+          <div>
+            <p>Status</p>
+            <my-btn [class]="'btn-square bg-grey'">{{ issue.status }}</my-btn>
+          </div>
+          <div class="dropdown" [ngClass]="{'show': toggleDropDownS}">
+            <p *ngFor="let item of statusArray" (clicl)="updateStatus(item)">{{ item }}</p>
+          </div>
         </div>
-        <div class="reporter-btn">
-          <p>Reporter</p>
-          <my-btn [class]="'btn-square bg-grey'">{{ reporter.name }}</my-btn>
+        <div class="reporter-btn mt-2" (click)="toggleDropDownR = !toggleDropDownR">
+          <div>
+            <p>Reporter</p>
+            <my-btn [class]="'btn-square bg-grey'">
+              <div class="assignee-icon mr-1">
+                <img class="avatar" [src]="reporter.avatarUrl">
+              </div>{{ reporter.name }}
+            </my-btn>
+          </div>
+          <div class="dropdown" [ngClass]="{'show': toggleDropDownR}">
+            <div class="dropdown-reporter d-flex flex-column">
+              <ng-container *ngFor="let user of allUsers">
+                <div class="dropdown-reporter-wrap" (click)="updateReporter(user)">
+                  <div class="assignee-icon">
+                    <img class="avatar" [src]="user.avatarUrl">
+                  </div>
+                  <span class="text">{{ user.name }}</span>
+                </div>
+              </ng-container>
+            </div>
+          </div>
         </div>
-        <div class="assignee-btn">
+        <div class="assignee-btn mt-2">
           <p>Assignees</p>
           <ng-container *ngFor="let assigne of assignees">
             <my-btn [class]="'btn-square bg-grey'" class="mr-1">{{ assigne.name }}</my-btn>

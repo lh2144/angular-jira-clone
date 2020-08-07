@@ -1,9 +1,11 @@
 import { Component, OnInit, OnChanges, SimpleChanges, Inject, Input } from '@angular/core';
-import { Issue, ProjectService, User, IssueType } from 'app/shared/service';
+import { Issue, ProjectService, User, IssueType, IssueStatus } from 'app/shared/service';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { IssueTypeUtil } from 'app/shared/service/util/issue-icon-type';
+import { IssuesUtil } from 'app/shared/service/util/issue-icon-type';
 import { quillConfiguration } from 'app/shared/service/util/quill-config';
+import { IconType } from 'typings/common';
+import { CommentService } from 'app/shared/service/comment/comment.service';
 
 @Component({
   selector: 'app-issues',
@@ -25,12 +27,17 @@ export class IssuesComponent implements OnInit, OnChanges {
   public assignees: User[];
   public title: string;
   public issueType: any;
-  public toggleDropDown: boolean = false;
+  public toggleDropDownT: boolean = false;
+  public toggleDropDownS: boolean = false;
+  public toggleDropDownR: boolean = false;
+  public statusArray: IssueStatus[];
+  public allUsers: User[];
 
   constructor(
     public dialogRef: MatDialogRef<IssuesComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public projectService: ProjectService
+    public projectService: ProjectService,
+    public commentService: CommentService
   ) { }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -46,17 +53,19 @@ export class IssuesComponent implements OnInit, OnChanges {
     this.descpControl = new FormControl(this.issue.description);
     this.commentControl = new FormControl();
     this.titleControl = new FormControl();
-    const icon = IssueTypeUtil.getIssueTypeIcon(this.issue.type);
+    const icon = IssuesUtil.getIssueTypeIcon(this.issue.type);
     this.iconType = icon.icon;
     this.iconClass = icon.class;
     this.getTypeDropDown(this.issue.type);
+    this.getStatusDropDown(this.issue.status);
     this.reporter = this.projectService.getReporter(this.issue.reporterId);
     this.assignees = this.projectService.getAssignees(this.issue.id);
     this.title = this.issue.title;
+    this.allUsers = this.projectService.users.filter(user => user.id !== this.reporter.id);
   }
 
   public getTypeDropDown(cur: IssueType): void {
-    const temp = { ...IssueTypeUtil.issuetypes };
+    const temp = { ...IssuesUtil.issuetypes };
     delete temp[cur];
     this.issueType = [];
     for (const pro in temp) {
@@ -64,6 +73,10 @@ export class IssuesComponent implements OnInit, OnChanges {
         this.issueType.push(temp[pro]);
       }
     }
+  }
+
+  public getStatusDropDown(cur: IssueStatus): void {
+    this.statusArray = IssuesUtil.issueStatus.filter(item => item !== cur);
   }
   public editorCreated(evn: any): void {
     // tslint:disable-next-line: no-unused-expression
@@ -84,6 +97,7 @@ export class IssuesComponent implements OnInit, OnChanges {
       description: this.descpControl.value
     };
     this.projectService.updateIssue(payload);
+    this.setEditorMode(false);
   }
 
   public updateTitle(): void {
@@ -94,7 +108,40 @@ export class IssuesComponent implements OnInit, OnChanges {
     this.projectService.updateIssue(payload);
   }
 
-  public updateType(): void {
+  public updateType(type: IconType): void {
+    const payload = {
+      id: this.issue.id,
+      type: type.type
+    };
+    this.iconClass = type.class;
+    this.iconType = type.icon;
+    this.getTypeDropDown(type.type as IssueType);
+    this.projectService.updateIssue(payload);
+  }
 
+  public updateStatus(status: IssueStatus): void {
+    const payload = {
+      id: this.issue.id,
+      status
+    };
+    this.getStatusDropDown(status);
+    this.projectService.updateIssue(payload);
+  }
+
+  public updateReporter(newReporter: User): void {
+    this.allUsers.unshift(this.reporter);
+    this.reporter = newReporter;
+    this.allUsers = this.allUsers.filter(user => user.id !== newReporter.id)
+  }
+
+  public setEditorMode(val: boolean): void {
+    this.isDescpEditing = val;
+  }
+
+  public saveComment(): void {
+    const body = this.commentControl.value;
+    const user = new User();
+    this.commentService.updateComment(body, this.issue.id, user as User);
+    this.isCommentEditing = false;
   }
 }

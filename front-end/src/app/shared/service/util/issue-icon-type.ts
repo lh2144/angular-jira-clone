@@ -1,6 +1,6 @@
-import { IssueType } from '../project';
+import { IssueType, IssueStatus } from '../project';
 import { IconType } from 'typings/common';
-export class IssueTypeUtil {
+export class IssuesUtil {
   public static issuetypes = {
     Task: {
       class: 'icon-task',
@@ -18,8 +18,14 @@ export class IssueTypeUtil {
       type: 'Bug'
     }
   };
+  public static issueStatus = [
+    IssueStatus.BACKLOG,
+    IssueStatus.DONE,
+    IssueStatus.IN_PROGRESS,
+    IssueStatus.SELECTED
+  ];
   public static getIssueTypeIcon(issueType: IssueType): IconType {
 
-    return IssueTypeUtil.issuetypes[issueType];
+    return IssuesUtil.issuetypes[issueType];
   }
 }
