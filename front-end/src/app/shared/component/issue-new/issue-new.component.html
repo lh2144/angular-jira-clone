@@ -1,1 +1,35 @@
-<p>issue-new works!</p>
+<div class="issue-new-wrap">
+  <div class="form-container">
+    <form [formGroup]="issueForm" class="d-flex">
+
+      <label>Issue Type</label>
+      <my-select [control]="issueForm.controls['type']" [options]="issueType">
+        <span>Select Type</span>
+      </my-select>
+
+      <label class="mt-2">Issue Priority</label>
+      <my-select [control]="issueForm.controls['priority']" [options]="priority">
+        <span>Select Priority</span>
+      </my-select>
+
+      <label class="mt-2">
+        short Summary
+        <input class="form-control" type="text" name="summary" formControlName="summary">
+      </label>
+
+      <label class="mt-2">Description</label>
+      <quill-editor [formControl]="issueForm.controls['description']" [modules]="editorConfig"></quill-editor>
+      <label class="mt-2">Reporter</label>
+      <my-select [control]="issueForm.controls['reporter']" type="img" [options]="userOptions"></my-select>
+
+      <label class="mt-2">Assignee</label>
+      <my-select [control]="issueForm.controls['assignee']" type="img" [options]="assigneeOptions" multiple="true">
+      </my-select>
+
+      <div class="btn-wrap mt-3">
+        <my-btn (click)="saveIssue()">Save</my-btn>
+        <my-btn [class]="'btn-secondry'" (click)="reset()">Cancel</my-btn>
+      </div>
+    </form>
+  </div>
+</div>

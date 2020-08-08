@@ -12,6 +12,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { IssueNewComponent } from './issue-new/issue-new.component';
+import { SelectComponent } from './select/select.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -28,6 +29,7 @@ import { IssueNewComponent } from './issue-new/issue-new.component';
     IssueCardComponent,
     IssuesComponent,
     NavbarComponent,
+    SelectComponent,
     ReactiveFormsModule,
     CommonModule,
     FormsModule,
@@ -39,7 +41,8 @@ import { IssueNewComponent } from './issue-new/issue-new.component';
     IssueCardComponent,
     IssuesComponent,
     NavbarComponent,
-    IssueNewComponent
+    IssueNewComponent,
+    SelectComponent
   ],
   providers: [],
 })

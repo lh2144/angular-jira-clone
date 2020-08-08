@@ -36,7 +36,7 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  overflow-y: hidden;
+  overflow-y: scroll;
 }
 
 * {
@@ -82,4 +82,57 @@ main {
 .cdk-drag-preview {
   box-sizing: border-box;
   text-align: center;
+}
+
+.dropdown {
+  position: absolute;
+  width: 100%;
+  padding-left: 16px;
+  padding-top: 5px;
+  display: none;
+  background-color: white;
+  box-shadow:
+    0 3px 6px -4px rgba(0, 0, 0, .12),
+    0 6px 16px 0 rgba(0, 0, 0, .08),
+    0 9px 28px 8px rgba(0, 0, 0, .05);
+  border-radius: 2px;
+  text-transform: uppercase;
+  z-index: 2;
+
+  .dropdown {
+    .dropdown-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &.show {
+    display: block;
+  }
+}
+
+.icon-task {
+  color: rgb(75, 173, 232);
+}
+
+.icon-story {
+  color: rgb(99, 186, 60);
+}
+
+.icon-bug {
+  color: rgb(229, 73, 58);
+}
+
+.assignee-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  text-align: left;
+
+  .avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+
+  }
 }

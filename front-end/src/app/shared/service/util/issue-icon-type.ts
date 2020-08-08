@@ -1,4 +1,4 @@
-import { IssueType, IssueStatus } from '../project';
+import { IssueType, IssueStatus, IssuePriority } from '../project';
 import { IconType } from 'typings/common';
 export class IssuesUtil {
   public static issuetypes = {
@@ -18,6 +18,15 @@ export class IssuesUtil {
       type: 'Bug'
     }
   };
+
+  public static issuePriority = [
+    IssuePriority.LOW,
+    IssuePriority.LOWEST,
+    IssuePriority.MEDIUM,
+    IssuePriority.HIGH,
+    IssuePriority.HIGHEST
+  ];
+
   public static issueStatus = [
     IssueStatus.BACKLOG,
     IssueStatus.DONE,

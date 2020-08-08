@@ -17,8 +17,8 @@ export class NavbarComponent implements OnInit {
 
   public createIssue(): void {
     this.diaLog.open(IssueNewComponent, {
-      maxHeight: '800px',
-      maxWidth: '800px',
+      minHeight: '700px',
+      minWidth: '800px',
       autoFocus: false
     });
   }

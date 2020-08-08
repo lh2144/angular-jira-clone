@@ -1,0 +1,27 @@
+.dropdown-container {
+  position: relative;
+
+  button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding-left: 5px;
+    border: 1px solid #84a1be;
+    border-radius: 0.25rem;
+  }
+
+  ul {
+    li {
+      list-style: none;
+
+      .text {
+        display: inline-block;
+        vertical-align: super;
+      }
+
+      &:last-child {
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}

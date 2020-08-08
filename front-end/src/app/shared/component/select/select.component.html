@@ -1,0 +1,35 @@
+<div class="dropdown-container">
+  <button class="form-control btn-drop" (click)="toggleDropDown = !toggleDropDown">
+    <ng-content *ngIf="!isClicked; else selected" select="span"></ng-content>
+    <ng-template #selected>
+      <ng-container *ngIf="type === 'icon'">
+        <span class="material-icons {{display?.class}}">
+          {{ display?.icon }}
+        </span>
+        <span class="text"> {{ display?.type }}</span>
+      </ng-container>
+      <ng-container *ngIf="type === 'img'">
+        <div class="assignee-icon">
+          <img class="avatar" [src]="display?.img">
+        </div>
+        <span class="text">{{ display?.type }}</span>
+      </ng-container>
+    </ng-template>
+  </button>
+  <ul class="dropdown" [ngClass]="{'show': toggleDropDown}">
+    <ng-container *ngIf="type === 'icon'">
+      <li *ngFor="let type of options" (click)="toggleClick(type); $event.preventDefault()">
+        <span class="material-icons {{type.class}}">{{ type.icon }}</span>
+        <span class="text">-{{ type.type }}</span>
+      </li>
+    </ng-container>
+    <ng-container *ngIf="type === 'img'">
+      <li *ngFor="let type of options" (click)="toggleClick(type); $event.preventDefault()">
+        <div class="assignee-icon">
+          <img class="avatar" [src]="type.img">
+        </div>
+        <span class="text">{{ type.type }}</span>
+      </li>
+    </ng-container>
+  </ul>
+</div>

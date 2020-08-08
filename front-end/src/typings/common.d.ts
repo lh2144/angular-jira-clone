@@ -11,3 +11,10 @@ type IconType = {
   icon: string;
   type: string;
 }
+
+type Option = {
+  class?: string;
+  icon?: string;
+  type: string;
+  img?: string;
+}

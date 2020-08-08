@@ -1,4 +1,4 @@
-<my-navbar></my-navbar>
+<my-navbar *ngIf="isAuth"></my-navbar>
 
 <main class="main-container" *ngIf="canLoad">
   <router-outlet></router-outlet>

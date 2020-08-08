@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from './shared/service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +10,23 @@ import { ProjectService } from './shared/service';
 export class AppComponent implements OnInit {
   public isAuth: boolean = false;
   public canLoad: boolean;
-  constructor(public projectService: ProjectService) {
+  constructor(public projectService: ProjectService, public router: Router) {
     // this.projectService.getProject().subscribe(() => this.canLoad = true);
-    console.log(this.projectService.porject);
+    this.router.events.subscribe((event) => {
+      if (event.hasOwnProperty('url')) {
+        const url = event['url'];
+        // this.isAuth = true;
+        if (url === '/login') {
+          this.isAuth = false;
+          return;
+        }
+        if (url === '/') {
+          this.isAuth = false;
+          return;
+        }
+        this.isAuth = true;
+      }
+    });
   }
 
   public ngOnInit(): void {
