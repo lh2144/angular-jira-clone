@@ -2,6 +2,27 @@
   <div class="brand">
     <div class="brand-img">
     </div>
-    <p class="bran-text">Angular Jira Clone</p>
+    <p class="brand-text">Angular Jira Clone</p>
   </div>
+  <div class="gap"></div>
+  <div class="issue-add icon" (click)="createIssue()">
+    <span class="material-icons">
+      add
+    </span>
+  </div>
+  <div class="issue-search icon">
+    <span class="material-icons">
+      search
+    </span>
+  </div>
+  <div class="profile">
+    <div class="assignee-icon">
+      <img class="avatar">
+    </div>
+  </div>
+</nav>
+<nav class="nav-secondary d-flex">
+  <div class="text" [routerLink]="['/dashboard']" [routerLinkActive]="'selected'">Home</div>
+  <div class="text" routerLink="./setting" [routerLinkActive]="'selected'">Project</div>
+  <div class="text" routerLink="./board" [routerLinkActive]="'selected'">KanBanBoard</div>
 </nav>

@@ -1,16 +1,76 @@
 .main-nav {
   background-color: #0747a6;
+  color: white;
+  font-size: 1rem;
 
   .brand {
+
     .brand-img {
       width: 45px;
       height: 45px;
       background-image: url("https://res.cloudinary.com/dvujyxh7e/image/upload/c_scale,w_256/v1593097745/angular-vietnam-transparent_iwfwxa.png");
       border-radius: 3px;
+      background-size: cover;
+      display: inline-block;
     }
 
     .brand-text {
       display: inline-block;
+      color: white;
+      vertical-align: text-bottom;
+      line-height: 2;
+    }
+  }
+
+  .text {
+    line-height: 40px;
+    margin-bottom: 12px;
+    margin-right: 4px;
+    padding: 0 10px;
+    cursor: pointer;
+    box-shadow: white;
+  }
+
+  .gap {
+    flex: 1 1 auto;
+  }
+
+  .icon {
+    padding: 10px;
+  }
+
+  .assignee-icon {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    text-align: left;
+    padding-top: 10px;
+    margin-right: 10px;
+    padding-left: 10px;
+
+    .avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 100%;
+      background-color: whitesmoke;
+    }
+  }
+}
+
+.nav-secondary {
+  justify-content: center;
+  margin-top: 0.5rem;
+
+  .text {
+    color: black;
+    font-size: 1.25rem;
+    padding: 10px;
+    border-radius: 2px;
+    font-weight: 400;
+    outline: none;
+
+    &.selected {
+      border-bottom: 2px solid rgba(7, 71, 166, 0.7);
     }
   }
 }

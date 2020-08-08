@@ -10,6 +10,7 @@ import { IssuesComponent } from './issues/issues.component';
 import { QuillModule } from 'ngx-quill';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NavbarComponent } from './navbar/navbar.component';
+import { RouterModule } from '@angular/router';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +18,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     ReactiveFormsModule,
     DragDropModule,
     MatDialogModule,
+    RouterModule,
     QuillModule.forRoot()
   ],
   exports: [
