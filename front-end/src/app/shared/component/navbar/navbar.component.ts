@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'app/shared/service';
 import { MatDialog } from '@angular/material/dialog';
+import { IssueNewComponent } from '../issue-new/issue-new.component';
 
 @Component({
   selector: 'my-navbar',
@@ -15,7 +16,11 @@ export class NavbarComponent implements OnInit {
   }
 
   public createIssue(): void {
-    // this.diaLog.open()
+    this.diaLog.open(IssueNewComponent, {
+      maxHeight: '800px',
+      maxWidth: '800px',
+      autoFocus: false
+    });
   }
 
 }
