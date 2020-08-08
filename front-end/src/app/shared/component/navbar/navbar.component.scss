@@ -1,0 +1,16 @@
+.main-nav {
+  background-color: #0747a6;
+
+  .brand {
+    .brand-img {
+      width: 45px;
+      height: 45px;
+      background-image: url("https://res.cloudinary.com/dvujyxh7e/image/upload/c_scale,w_256/v1593097745/angular-vietnam-transparent_iwfwxa.png");
+      border-radius: 3px;
+    }
+
+    .brand-text {
+      display: inline-block;
+    }
+  }
+}

@@ -30,8 +30,10 @@ export class IssuesComponent implements OnInit, OnChanges {
   public toggleDropDownT: boolean = false;
   public toggleDropDownS: boolean = false;
   public toggleDropDownR: boolean = false;
+  public toggleDropDownA: boolean = false;
   public statusArray: IssueStatus[];
-  public allUsers: User[];
+  public avaReporters: User[];
+  public avaAssignees: User[];
 
   constructor(
     public dialogRef: MatDialogRef<IssuesComponent>,
@@ -61,7 +63,36 @@ export class IssuesComponent implements OnInit, OnChanges {
     this.reporter = this.projectService.getReporter(this.issue.reporterId);
     this.assignees = this.projectService.getAssignees(this.issue.id);
     this.title = this.issue.title;
-    this.allUsers = this.projectService.users.filter(user => user.id !== this.reporter.id);
+    this.avaReporters = this.projectService.users.filter(user => user.id !== this.reporter.id);
+    this.avaAssignees = this.getAvaliableAssignees(this.assignees);
+  }
+
+  public getAvaliableAssignees(cur: User[]): User[] {
+    const all = [...this.projectService.users];
+    let len = cur.length;
+    const res = new Array(all.length);
+    cur.forEach((value) => {
+      const index = all.findIndex(item => item.id === value.id);
+      res[index] = true;
+    });
+    let start = 0;
+    for (let i = all.length - 1; i >= 0; i--) {
+      if (!res[i]) {
+        continue;
+      } else {
+        [all[i], all[start]] = [all[start], all[i]];
+        start++;
+      }
+    }
+    while (len > 0) {
+      all.shift();
+      len--;
+    }
+    return all;
+  }
+
+  public deleteAssignee(cur: User): void {
+    this.assignees = this.assignees.filter(item => item.id !== cur.id);
   }
 
   public getTypeDropDown(cur: IssueType): void {
@@ -78,6 +109,7 @@ export class IssuesComponent implements OnInit, OnChanges {
   public getStatusDropDown(cur: IssueStatus): void {
     this.statusArray = IssuesUtil.issueStatus.filter(item => item !== cur);
   }
+
   public editorCreated(evn: any): void {
     // tslint:disable-next-line: no-unused-expression
     evn.focus && evn.focus();
@@ -89,6 +121,10 @@ export class IssuesComponent implements OnInit, OnChanges {
 
   public deleteIssue(): void {
 
+  }
+
+  public addNewAssignee(cur: User): void {
+    this.assignees.push(cur);
   }
 
   public saveDescription(): void {
@@ -129,9 +165,14 @@ export class IssuesComponent implements OnInit, OnChanges {
   }
 
   public updateReporter(newReporter: User): void {
-    this.allUsers.unshift(this.reporter);
+    this.avaReporters.unshift(this.reporter);
     this.reporter = newReporter;
-    this.allUsers = this.allUsers.filter(user => user.id !== newReporter.id)
+    this.avaReporters = this.avaReporters.filter(user => user.id !== newReporter.id)
+  }
+
+  public updateAssigness(cur: User): void {
+    this.assignees.push(cur);
+    this.avaAssignees = this.getAvaliableAssignees(this.assignees);
   }
 
   public setEditorMode(val: boolean): void {

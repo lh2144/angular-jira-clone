@@ -94,7 +94,7 @@
           </div>
           <div class="dropdown" [ngClass]="{'show': toggleDropDownR}">
             <div class="dropdown-reporter d-flex flex-column">
-              <ng-container *ngFor="let user of allUsers">
+              <ng-container *ngFor="let user of avaReporters">
                 <div class="dropdown-reporter-wrap" (click)="updateReporter(user)">
                   <div class="assignee-icon">
                     <img class="avatar" [src]="user.avatarUrl">
@@ -106,10 +106,31 @@
           </div>
         </div>
         <div class="assignee-btn mt-2">
-          <p>Assignees</p>
-          <ng-container *ngFor="let assigne of assignees">
-            <my-btn [class]="'btn-square bg-grey'" class="mr-1">{{ assigne.name }}</my-btn>
-          </ng-container>
+          <div>
+            <p>Assignees</p>
+            <div class="d-flex">
+              <ng-container *ngFor="let assigne of assignees">
+                <div class="assignes-wrap mr-1">
+                  <my-btn [class]="'btn-square bg-grey'" class="mr-1">
+                    {{ assigne.name }}</my-btn>
+                  <div class="close" (click)="deleteAssignee(assigne)">
+                    <span aria-hidden="true">&times;</span>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+          <div class="dropdown" [ngClass]="{'show': toggleDropDownA}">
+            <ng-container *ngFor="let value of avaAssignees">
+              <div class="dropdown-assignee-wrap" (click)="updateAssigness(value)">
+                <div class="assignee-icon">
+                  <img class="avatar" [src]="value.avatarUrl">
+                </div>
+                <span class="text">{{ value.name }}</span>
+              </div>
+            </ng-container>
+          </div>
+          <p class="mt-3" (click)="toggleDropDownA = !toggleDropDownA">+ new Assignee</p>
         </div>
       </div>
       <div class="issue-timestamp">

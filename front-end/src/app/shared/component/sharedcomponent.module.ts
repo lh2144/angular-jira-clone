@@ -9,6 +9,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { IssuesComponent } from './issues/issues.component';
 import { QuillModule } from 'ngx-quill';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NavbarComponent } from './navbar/navbar.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -23,12 +24,18 @@ import { MatDialogModule } from '@angular/material/dialog';
     ButtonComponent,
     IssueCardComponent,
     IssuesComponent,
+    NavbarComponent,
     ReactiveFormsModule,
     CommonModule,
     FormsModule,
     DragDropModule
   ],
-  declarations: [InputComponent, ButtonComponent, IssueCardComponent, IssuesComponent],
+  declarations: [
+    InputComponent,
+    ButtonComponent,
+    IssueCardComponent,
+    IssuesComponent,
+    NavbarComponent],
   providers: [],
 })
 export class SharedComponentModule { }
