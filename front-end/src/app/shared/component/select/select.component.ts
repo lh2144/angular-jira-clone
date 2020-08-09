@@ -26,7 +26,7 @@ export class SelectComponent implements OnInit {
   public toggleClick(val: Option): void {
     this.control.setValue(val.type);
     this.display = this.display ? '' : val;
-    this.isClicked = true;
+    this.isClicked = !this.isClicked;
     this.toggleDropDown = !this.toggleDropDown;
   }
 
