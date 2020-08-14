@@ -72,6 +72,7 @@
     border-radius: 2px;
     font-weight: 400;
     outline: none;
+    cursor: pointer;
 
     &.selected {
       border-bottom: 2px solid rgba(7, 71, 166, 0.7);
