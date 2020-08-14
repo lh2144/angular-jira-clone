@@ -13,6 +13,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { IssueNewComponent } from './issue-new/issue-new.component';
 import { SelectComponent } from './select/select.component';
+import { GoogleChartsModule } from 'angular-google-charts';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -20,6 +22,7 @@ import { SelectComponent } from './select/select.component';
     ReactiveFormsModule,
     DragDropModule,
     MatDialogModule,
+    GoogleChartsModule,
     RouterModule,
     QuillModule.forRoot()
   ],
@@ -32,8 +35,9 @@ import { SelectComponent } from './select/select.component';
     SelectComponent,
     ReactiveFormsModule,
     CommonModule,
+    GoogleChartsModule,
     FormsModule,
-    DragDropModule
+    DragDropModule,
   ],
   declarations: [
     InputComponent,
@@ -42,7 +46,7 @@ import { SelectComponent } from './select/select.component';
     IssuesComponent,
     NavbarComponent,
     IssueNewComponent,
-    SelectComponent
+    SelectComponent,
   ],
   providers: [],
 })

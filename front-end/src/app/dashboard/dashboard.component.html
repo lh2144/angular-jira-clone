@@ -1,1 +1,31 @@
-<p>dashboard works!</p>
+<div class="chart-wrapper">
+  <div class="flex-grow-1">
+    <google-chart [type]="pipeChar" [data]="pipeData" [columns]="charColumP" [title]="chartTitleP" [options]="myOption">
+    </google-chart>
+  </div>
+
+  <div class="ml-2 flex-grow-1">
+    <google-chart [type]="barChar" [data]="barData" [columns]="charColumB" [title]="chartTitleB" [options]="myOption">
+    </google-chart>
+  </div>
+</div>
+
+
+<div class="dashboard-wrapper">
+  <div class="issue-list">
+    <div class="list-title row no-gutters">
+      <div class="col-3 flex-shrink-1">Issue</div>
+      <div class="col-3 flex-shrink-1">Issue priority</div>
+      <div class="col-3 flex-shrink-1">Assignee</div>
+      <div class="col-3 flex-shrink-1">Reporter</div>
+    </div>
+    <ng-container *ngFor="let item of issue">
+      <div class="list-container row no-gutters mt-1">
+        <div class="col-3">{{ item.type}}-{{ item.id }}</div>
+        <div class="col-3">{{ item.priority }}</div>
+        <div class="col-3">{{ item.userIds[0] }}</div>
+        <div class="col-3">{{ item.reporterId }}</div>
+      </div>
+    </ng-container>
+  </div>
+</div>

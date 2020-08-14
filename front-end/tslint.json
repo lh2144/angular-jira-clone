@@ -141,7 +141,8 @@
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
     "ban-types": false,
-    "no-string-literal": false
+    "no-string-literal": false,
+    "prefer-for-of": false
   },
   "rulesDirectory": [
     "node_modules/codelyzer",

@@ -1,0 +1,29 @@
+.chart-wrapper {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  margin-top: 1rem;
+}
+
+.dashboard-wrapper {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  margin-top: 2rem;
+
+  .issue-list {
+    width: 100%;
+    background-color: white;
+
+    .list-title {
+      flex-wrap: nowrap;
+    }
+
+    .list-container {
+      background-color: white;
+      box-shadow: 2px 2px 5px gainsboro;
+    }
+  }
+}
